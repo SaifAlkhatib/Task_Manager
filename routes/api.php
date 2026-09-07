@@ -18,19 +18,26 @@ Route::get('/user', function (Request $request) {
 // Route::delete('tasks/{id}',[TaskController::class,'distroy']);
 
 //بديلة عن اللي فوق
-route::apiResource('tasks',TaskController::class);
 
-route::post('profile',[ProfileController::class,'store']);
-route::get('profile/{id}',[ProfileController::class,'show']);
-route::get('user/{id}/profile',[UserController::class,'getProfile']);
+Route::middleware('auth:sanctum')->group(function()
+{
+Route::apiResource('tasks',TaskController::class);
+
+Route::prefix('profile')->group(function(){
+Route::post('',[ProfileController::class,'store']);
+Route::get('/{id}',[ProfileController::class,'show']);
+});
+
+Route::get('user/{id}/profile',[UserController::class,'getProfile']);
 Route::get('/user/{id}/tasks',[UserController::class,'getUserTasks']);
-Route::get('/task/{id}/user',[TaskController::class,'getTasksUser']);
 
+Route::get('/task/{id}/user',[TaskController::class,'getTasksUser']);
 Route::post('tasks/{taskId}/categories',[TaskController::class,'addCategoriesToTask']);
 Route::get('tasks/{taskId}/categories',[TaskController::class,'getTaskCategories']);
 Route::get('categories/{taskId}/tasks',[TaskController::class ,'getCategoryTasks']);
 
 //login Routes
-Route::post('register',([UserController::class,'register']));
+});
 Route::post('login',[UserController::class,'login']);
+Route::post('register',([UserController::class,'register']));
 Route::post('logout',[UserController::class,'logout'])->middleware('auth:sanctum');

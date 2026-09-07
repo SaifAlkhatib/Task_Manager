@@ -49,13 +49,13 @@ class UserController extends Controller
         'message'=>'Uer Login Successfully',
         'User' => $user
         ,'Token'=>$token]
-        , 201);
+        , 200);
      }     
     public function logout(request $request)
     {
       $request -> user()->currentAccessToken()->delete();
       return response()->json([
-        'message'=>'Uer Logout Successfully']);
+        'message'=>'Uer Logout Successfully'],200);
     }
 
 
