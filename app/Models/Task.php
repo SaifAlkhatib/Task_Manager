@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $fillable = ['title','description', 'priority'];
+    protected $fillable = ['title','description', 'priority','user_id'];
     protected $table = 'tasks';
 
-  public function categories()
+    public function user (){//one to many
+      return $this ->belongsTo(User::class);
+    }
+
+  public function categories()// many to many 
   {
     return $this -> belongsToMany(Category::class,'category_task');
   }

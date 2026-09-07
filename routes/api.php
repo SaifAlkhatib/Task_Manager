@@ -23,6 +23,8 @@ route::apiResource('tasks',TaskController::class);
 route::post('profile',[ProfileController::class,'store']);
 route::get('profile/{id}',[ProfileController::class,'show']);
 route::get('user/{id}/profile',[UserController::class,'getProfile']);
+Route::get('/user/{id}/tasks',[UserController::class,'getUserTasks']);
+Route::get('/task/{id}/user',[TaskController::class,'getTasksUser']);
 
 Route::post('tasks/{taskId}/categories',[TaskController::class,'addCategoriesToTask']);
 Route::get('tasks/{taskId}/categories',[TaskController::class,'getTaskCategories']);

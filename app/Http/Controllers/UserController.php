@@ -25,6 +25,10 @@ class UserController extends Controller
         'User' => $user]
         , 201);
     }
+    public function getUserTasks(int $id){
+       $tasks = User::findOrFail($id)->tasks;
+        return response()->json($tasks, 200);
+       }
 
     public function login(request $request)
     {
