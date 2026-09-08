@@ -28,6 +28,12 @@ class TaskController extends Controller
         return response()->json($tasks, 200);
     }
 
+    public function getAllTasks()
+    {
+        $tasks = Task::all();
+         return response()->json($tasks, 200);
+    }
+
     public function update(UpdateTaskRequest $request, int $id)
     {
         $user_id = Auth::user()->id;

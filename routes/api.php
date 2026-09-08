@@ -17,11 +17,12 @@ Route::get('/user', function (Request $request) {
 // Route::get('tasks/{id}',[TaskController::class,'show']);
 // Route::delete('tasks/{id}',[TaskController::class,'distroy']);
 
-//بديلة عن اللي فوق
-
 Route::middleware('auth:sanctum')->group(function()
 {
+    //بديلة عن اللي فوق
 Route::apiResource('tasks',TaskController::class);
+
+Route::post('task/all',[TaskController::class, 'getAllTasks'])->middleware('CheckUser');
 
 Route::prefix('profile')->group(function(){
 Route::post('',[ProfileController::class,'store']);
