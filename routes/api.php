@@ -24,6 +24,10 @@ Route::apiResource('tasks',TaskController::class);
 
 Route::post('task/all',[TaskController::class, 'getAllTasks'])->middleware('CheckUser');
 
+Route::post('task/{id}/favorite',[TaskController::class, 'addToFavorites']);
+Route::delete('task/{id}/favorite',[TaskController::class, 'removeFromFavorites']);
+Route::get('task/favorites',[TaskController::class, 'getFavoritesTasks']);
+
 Route::prefix('profile')->group(function(){
 Route::post('',[ProfileController::class,'store']);
 Route::get('/{id}',[ProfileController::class,'show']);
@@ -32,6 +36,7 @@ Route::get('/{id}',[ProfileController::class,'show']);
 Route::get('user/{id}/profile',[UserController::class,'getProfile']);
 Route::get('/user/{id}/tasks',[UserController::class,'getUserTasks']);
 
+Route::get('/task/ordered',[TaskController::class,'getTaskByPriority']);
 Route::get('/task/{id}/user',[TaskController::class,'getTasksUser']);
 Route::post('tasks/{taskId}/categories',[TaskController::class,'addCategoriesToTask']);
 Route::get('tasks/{taskId}/categories',[TaskController::class,'getTaskCategories']);

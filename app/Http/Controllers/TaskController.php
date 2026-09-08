@@ -22,9 +22,9 @@ class TaskController extends Controller
         return response()->json($task, 201);
     }
 
-    public function index()
+    public function getTaskByPriority()
     {
-        $tasks = Auth::user()->tasks;
+        $tasks = Auth::user()->tasks()->orderByRaw("FIELD(priority,'high','medium','low')")->get();
         return response()->json($tasks, 200);
     }
 
@@ -80,5 +80,22 @@ class TaskController extends Controller
     {
         $tasks = Category::findOrFail($categoryId)->tasks;
         return response()->json($tasks, 200);
+    }
+
+    public function addToFavorites(int $taskId)
+    {
+        Task::findOrFail($taskId);
+        Auth::user()->favoriteTasks()->syncWithoutDetaching($taskId);
+        return response()->json(['message'=>'Task added to favorites'], 200);
+        }
+
+    public function removeFromFavorites(int $taskId){
+        Task::findOrFail($taskId);
+        Auth::user()->favoriteTasks()->detach($taskId);
+        return response()->json(['message'=>'Task removed from favorites'], 200);
+    }
+    public function getFavoritesTasks(){
+        $favorite = auth::user()->favoriteTasks;
+         return response()->json($favorite, 200);
     }
 }
