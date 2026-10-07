@@ -88,7 +88,7 @@ class TaskController extends Controller
         Auth::user()->favoriteTasks()->syncWithoutDetaching($taskId);
         return response()->json(['message'=>'Task added to favorites'], 200);
         }
-
+ 
     public function removeFromFavorites(int $taskId){
         Task::findOrFail($taskId);
         Auth::user()->favoriteTasks()->detach($taskId);
