@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/login?email=saif@gmail.com&password=12345678
+method: POST
+headers:
+  User-Agent: application/json
+  Accept: Thunder Client (https://www.thunderclient.com)
+queryParams:
+  email: saif@gmail.com
+  password: "12345678"
+auth:
+  type: bearer
+  credentials:
+    token: "{{auth_secret_0nni}}"
+order: 1000

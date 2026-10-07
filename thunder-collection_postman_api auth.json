@@ -1,0 +1,62 @@
+{
+    "info": {
+        "_postman_id": "e7d546aa-483d-4eb3-b107-f4e7dd221e19",
+        "name": "api auth",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "login",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://127.0.0.1:8000/api/login?email=saif@gmail.com&password=12345678",
+                    "query": [
+                        {
+                            "key": "email",
+                            "value": "saif@gmail.com"
+                        },
+                        {
+                            "key": "password",
+                            "value": "12345678"
+                        }
+                    ],
+                    "variable": [],
+                    "path": [
+                        "api",
+                        "login"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000"
+                },
+                "header": [
+                    {
+                        "key": "User-Agent",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "Thunder Client (https://www.thunderclient.com)"
+                    }
+                ],
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "1|454UJZWMlRvOCmlzTexLclZiqBgHym0FYEV4g0wB924687b7",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
