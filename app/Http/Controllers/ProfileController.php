@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         $userId = Auth::user()->id;
         $validated = $request -> validated();
-        $validated ['userId'] = $userId;
+        $validated ['user_id'] = $userId;
 
         if($request -> hasFile('image')){
            $path = $request->file('image')->store('my photo','public');
