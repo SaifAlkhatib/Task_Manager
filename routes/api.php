@@ -6,9 +6,9 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:sanctum');
 
 
 // Route::post('tasks',[TaskController::class,'store']);
@@ -35,6 +35,9 @@ Route::get('/{id}',[ProfileController::class,'show']);
 
 Route::get('user/{id}/profile',[UserController::class,'getProfile']);
 Route::get('/user/{id}/tasks',[UserController::class,'getUserTasks']);
+
+//بديله عن اول route
+Route::get('user',[UserController::class,'getUser']);
 
 Route::get('/task/ordered',[TaskController::class,'getTaskByPriority']);
 Route::get('/task/{id}/user',[TaskController::class,'getTasksUser']);
